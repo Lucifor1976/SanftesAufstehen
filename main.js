@@ -23,7 +23,7 @@ const feiertagState   = 'feiertage.0.heute.boolean'; //Datenpunkt des Feiertagsa
 // === ALEXA-ANSAGE-KONFIGURATION ===
 const alexaAnsageAktiv = true; // Alexa Ansage ob morgen ein Feiertag ist
 const alexaAnsageZeit  = "21:00"; //Zeitpunkt der Ansage
-const alexaDevice      = 'alexa2.0.Echo-Devices.3ab65f72f1964fd58c68590cba81cb3f'; //Datenpunkt des Echodevices für die Ansage
+const alexaDevice      = 'alexa2.0.Echo-Devices.G2A1A603042408RK.Commands.speak'; //Datenpunkt des Echodevices für die Ansage, Speak ist ggf zuverlässiger als Ansage
 const feiertagMorgen   = 'feiertage.0.morgen.boolean'; //Datenpunkt Feirtage für morgen
 
 // === HILFSFUNKTIONEN === ab hier keine Änderungen mehr vornehmen!
