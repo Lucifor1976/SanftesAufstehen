@@ -15,18 +15,18 @@ const endBrightness   = 100; //Endgültige Helligkeit
 
 // Optionen
 const wochenendeAktiv = false; // true = auch Sa/So, false = nur Mo-Fr
-const feiertageAktiv  = true; //Feiertagscheck an = Keine aktivität an Feiertagen
+const feiertageAktiv  = true; //Feiertagscheck an = Keine aktivität an Feiertagen, benötigt den Adapter Feiertage D/A/CH im iobroker
 
 // Feiertagsdatenpunkt vom ical-Adapter
-const feiertagState   = 'feiertage.0.heute.boolean';
+const feiertagState   = 'feiertage.0.heute.boolean'; //Datenpunkt des Feiertagsadapters
 
 // === ALEXA-ANSAGE-KONFIGURATION ===
-const alexaAnsageAktiv = true;
-const alexaAnsageZeit  = "21:00";
-const alexaDevice      = 'alexa2.0.Echo-Devices.3ab65f72f1964fd58c68590cba81cb3f';
-const feiertagMorgen   = 'feiertage.0.morgen.boolean';
+const alexaAnsageAktiv = true; // Alexa Ansage ob morgen ein Feiertag ist
+const alexaAnsageZeit  = "21:00"; //Zeitpunkt der Ansage
+const alexaDevice      = 'alexa2.0.Echo-Devices.3ab65f72f1964fd58c68590cba81cb3f'; //Datenpunkt des Echodevices für die Ansage
+const feiertagMorgen   = 'feiertage.0.morgen.boolean'; //Datenpunkt Feirtage für morgen
 
-// === HILFSFUNKTIONEN ===
+// === HILFSFUNKTIONEN === ab hier keine Änderungen mehr vornehmen!
 function zeitInMinuten(zeitStr) {
     const [h, m] = zeitStr.split(':').map(Number);
     return h * 60 + m;
