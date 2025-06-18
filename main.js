@@ -117,7 +117,7 @@ schedule('* * * * *', () => {
 
             if (state.val === true) {
                 const text = 'Achtung, morgen ist ein Feiertag. Sanftes Aufstehen ist deaktiviert.';
-                setState(`${alexaDevice}.Commands.announcement`, text);
+                setState(`${alexaDevice}.Commands.speak`, { val: text, ack: false });
                 console.log(`Alexa-Ansage um ${alexaAnsageZeit} wurde gesendet.`);
             } else {
                 console.log("Morgen ist kein Feiertag – keine Alexa-Ansage.");
