@@ -10,23 +10,25 @@ const endZeit       = "04:00"; // Zeitpunkt, bis auf 100% hochgedimmt wird
 const abschaltZeit  = "04:10"; // Zeitpunkt zum Ausschalten der Lampe um ggf. weitere Personen im Bett nicht zu stören
 
 // Werte
-const startBrightness = 5; //Anfängliche Helligkeit
-const endBrightness   = 100; //Endgültige Helligkeit
+const startBrightness = 5; // Anfängliche Helligkeit
+const endBrightness   = 100; // Endgültige Helligkeit
 
 // Optionen
 const wochenendeAktiv = false; // true = auch Sa/So, false = nur Mo-Fr
-const feiertageAktiv  = true; //Feiertagscheck an = Keine aktivität an Feiertagen, benötigt den Adapter Feiertage D/A/CH im iobroker
+const testAnsageText  = 'Dies ist ein Test der sanften Aufsteh-Automatik. Bitte nicht reagieren.'; // Text der im Testmodus gesprochen wird // Text der im Testmodus gesprochen wird // true = auch Sa/So, false = nur Mo-Fr
+const feiertageAktiv  = true; // Feiertagscheck an = Keine aktivität an Feiertagen
+const testmodusAktiv  = false; // true = Testmodus aktiv: Alexa sagt jede Minute einen Testtext
 
 // Feiertagsdatenpunkt vom ical-Adapter
-const feiertagState   = 'feiertage.0.heute.boolean'; //Datenpunkt des Feiertagsadapters
+const feiertagState   = 'feiertage.0.heute.boolean';
 
 // === ALEXA-ANSAGE-KONFIGURATION ===
-const alexaAnsageAktiv = true; // Alexa Ansage ob morgen ein Feiertag ist
-const alexaAnsageZeit  = "21:00"; //Zeitpunkt der Ansage
-const alexaDevice      = 'alexa2.0.Echo-Devices.G2A1A603042408RK.Commands.speak'; //Datenpunkt des Echodevices für die Ansage, Speak ist ggf zuverlässiger als Ansage
-const feiertagMorgen   = 'feiertage.0.morgen.boolean'; //Datenpunkt Feirtage für morgen
+const alexaAnsageAktiv = true;
+const alexaAnsageZeit  = "20:30";
+const alexaDevice      = 'alexa2.0.Echo-Devices.G2A1A603042408RK'; // Ohne "Speak" Datenpunkt, wird im Script gesetzt.
+const feiertagMorgen   = 'feiertage.0.morgen.boolean';
 
-// === HILFSFUNKTIONEN === ab hier keine Änderungen mehr vornehmen!
+// === HILFSFUNKTIONEN ===
 function zeitInMinuten(zeitStr) {
     const [h, m] = zeitStr.split(':').map(Number);
     return h * 60 + m;
@@ -124,4 +126,13 @@ schedule('* * * * *', () => {
             }
         });
     }
+});
+
+// === TESTMODUS: Alexa sagt jede Minute einen Testsatz ===
+schedule('* * * * *', () => {
+    if (!testmodusAktiv) return;
+
+    const text = testAnsageText;
+    setState(`${alexaDevice}.Commands.speak`, { val: text, ack: false });
+    console.log("[TESTMODUS] Alexa-Testansage wurde gesendet.");
 });
