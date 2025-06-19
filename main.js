@@ -1,4 +1,4 @@
-//Sanftes Auftehen fuer ZigBee dimmbare Lampen by Lucifor V0.3
+//Sanftes Auftehen fuer ZigBee dimmbare Lampen by Lucifor V0.5
 
 // === KONFIGURATION ===
 const lampeBrightness = 'zigbee.1.403059fffef3f001.brightness'; // Helligkeits-State deiner Lampe
@@ -15,11 +15,11 @@ const endBrightness   = 100; // Endgültige Helligkeit
 
 // Optionen
 const wochenendeAktiv = false; // true = auch Sa/So, false = nur Mo-Fr
-const testAnsageText  = 'Dies ist ein Test der sanften Aufsteh-Automatik. Bitte nicht reagieren.'; // Text der im Testmodus gesprochen wird // Text der im Testmodus gesprochen wird // true = auch Sa/So, false = nur Mo-Fr
-const feiertageAktiv  = true; // Feiertagscheck an = Keine aktivität an Feiertagen
+const testAnsageText  = 'Dies ist ein Test der sanften Aufsteh-Automatik. Bitte nicht reagieren.'; // Text der im Testmodus gesprochen wird 
+const feiertageAktiv  = true; // Feiertagscheck an = Kein Schalten der Lampe an folgenden Feiertagen. Sofern im Adapter korrekt konfiguriert!
 const testmodusAktiv  = false; // true = Testmodus aktiv: Alexa sagt jede Minute einen Testtext
 
-// Feiertagsdatenpunkt vom ical-Adapter
+// Feiertagsdatenpunkt vom Feiertags-Adapter
 const feiertagState   = 'feiertage.0.heute.boolean';
 
 // === ALEXA-ANSAGE-KONFIGURATION ===
