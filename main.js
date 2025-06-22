@@ -96,7 +96,7 @@ schedule('* * * * *', () => {
         }
 
         if (aktuelleMinuten === stopMin) {
-            setState(lampeBrightness, 0);
+            setState(lampeState, false, true);
             console.log("Lampe ausgeschaltet");
             clearInterval(fadeTimer);
         }
